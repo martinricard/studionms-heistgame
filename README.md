@@ -77,8 +77,8 @@ StreamElement Heist Widget/
 
 ### Risk Levels
 - **🟢 low** - 70% success, 1.2x-1.5x rewards
-- **🟠 medium** - 50% success, 1.5x-2.5x rewards  
-- **🔴 high** - 30% success, 2.5x-4.0x rewards
+- **🟠 medium** - 50% success, 1.5x-2.0x rewards  
+- **🔴 high** - 30% success, 1.8x-2.0x rewards
 
 ---
 
