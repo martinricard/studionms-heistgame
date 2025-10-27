@@ -23,8 +23,10 @@ let eventListenerAttached = false; // Prevent duplicate event listeners
 let heistState = {
   active: false, // Is a heist currently running
   participants: [], // Array of users who joined
+  initiator: null, // Username of who started the heist
   startTime: null, // When the heist started (timestamp)
   cooldowns: new Map(), // Username -> timestamp cooldown tracker
+  globalCooldown: null, // Global cooldown timestamp (prevents anyone from starting heists)
   timerInterval: null, // Countdown timer interval ID
   reminders: { // Reminder tracking
     sent30s: false,
@@ -487,6 +489,25 @@ function setCooldown(username) {
   heistState.cooldowns.set(username, Date.now());
 }
 
+function checkGlobalCooldown() {
+  if (!heistState.globalCooldown) return { ready: true, remaining: 0 };
+
+  const timePassed = Math.floor((Date.now() - heistState.globalCooldown) / 1000);
+  const cooldownSeconds = parseInt(fieldData.cooldownMinutes || 5) * 60;
+
+  if (timePassed < cooldownSeconds) {
+    const remaining = cooldownSeconds - timePassed;
+    return { ready: false, remaining };
+  }
+
+  return { ready: true, remaining: 0 };
+}
+
+function setGlobalCooldown() {
+  heistState.globalCooldown = Date.now();
+  console.log('[Heist Widget] Global cooldown set for', fieldData.cooldownMinutes || 5, 'minutes');
+}
+
 function getRiskLevels() {
   return {
     low: {
@@ -544,6 +565,11 @@ function cancelHeist(canceller) {
   heistState.reminders.sent30s = false;
   heistState.reminders.sent10s = false;
 
+  // Set global cooldown (prevents anyone from starting new heists, even when cancelled)
+  setGlobalCooldown();
+  
+  heistState.initiator = null;
+
   // Hide visual
   hideHeistStatus();
 
@@ -552,13 +578,25 @@ function cancelHeist(canceller) {
 
 function startHeist(initiator) {
   if (heistState.active) {
-    const msg = fieldData.msgHeistInProgress || 'A heist is already in progress!';
+    const joinCommand = fieldData.commandJoin || '!join';
+    const msg = fieldData.msgHeistInProgress || `A heist is already in progress! Type ${joinCommand} [amount] [risk] to join. Example: ${joinCommand} 100 medium`;
+    sendChatMessage(msg);
+    return;
+  }
+
+  // Check global cooldown (prevents anyone from starting heists)
+  const globalCooldown = checkGlobalCooldown();
+  if (!globalCooldown.ready) {
+    const msg = (fieldData.msgGlobalCooldown || 'A heist was recently completed! Wait {time} before starting another.')
+      .replace('{user}', initiator)
+      .replace('{time}', formatTime(globalCooldown.remaining));
     sendChatMessage(msg);
     return;
   }
 
   heistState.active = true;
   heistState.participants = [];
+  heistState.initiator = initiator; // Store who started the heist
   heistState.startTime = Date.now();
   heistState.reminders.sent30s = false;
   heistState.reminders.sent10s = false;
@@ -595,7 +633,7 @@ async function joinHeist(username, userId, amount, risk, event) {
   // Check cooldown
   const cooldown = checkCooldown(username);
   if (!cooldown.ready) {
-    const msg = (fieldData.msgCooldown || '{user}, you must wait {time} before joining another heist!')
+    const msg = (fieldData.msgUserCooldown || '{user}, you must wait {time} before joining another heist!')
       .replace('{user}', username)
       .replace('{time}', formatTime(cooldown.remaining));
     sendChatMessage(msg);
@@ -688,7 +726,9 @@ async function executeHeist() {
     const msg = fieldData.msgNoParticipants || 'No one joined the heist!';
     sendChatMessage(msg);
     heistState.active = false;
+    heistState.initiator = null;
     hideHeistStatus();
+    // Don't set global cooldown if no one participated
     return;
   }
 
@@ -722,9 +762,6 @@ async function executeHeist() {
         amount: participant.amount
       });
     }
-
-    // Set cooldown
-    setCooldown(participant.username);
   });
 
   // Award points to winners using StreamElements API
@@ -769,7 +806,17 @@ async function executeHeist() {
 
   // Reset state
   heistState.active = false;
+  
+  // Set global cooldown (prevents anyone from starting new heists)
+  setGlobalCooldown();
+  
+  // Set individual cooldowns for participants who just completed the heist
+  heistState.participants.forEach(participant => {
+    setCooldown(participant.username);
+  });
+  
   heistState.participants = [];
+  heistState.initiator = null;
   
   console.log('[Heist Widget] Heist completed - Success:', successCount, '/', results.length);
 }
