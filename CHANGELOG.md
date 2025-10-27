@@ -2,6 +2,71 @@
 
 All notable changes to the StreamElements Heist Widget project.
 
+## [2.1.2] - 2025-10-27
+
+### 🎯 Enhanced User Experience & Global Cooldown
+
+#### Added
+- **Global Cooldown System**
+  - Prevents anyone from starting heists for a configurable period after completion
+  - Single global cooldown replaces individual-only start cooldowns
+  - Applies to both completed heists and cancelled heists
+  - Configurable via existing `cooldownMinutes` field
+
+- **Separate Cooldown Messages**
+  - `msgGlobalCooldown` - For post-heist global cooldowns (new message field)
+  - `msgUserCooldown` - For individual user cooldowns (renamed from `msgCooldown`)
+  - Different messages for different cooldown scenarios provide better clarity
+
+- **Enhanced User Guidance**
+  - Improved "heist in progress" message with helpful instructions
+  - Dynamically includes join command with syntax example
+  - Example: "A heist is already in progress! Type !join [amount] [risk] to join. Example: !join 100 medium"
+  - Prevents confusion when users try to start heist during active one
+
+#### Changed
+- **Cooldown Logic**
+  - Global cooldown now prevents anyone from starting new heists
+  - Individual cooldowns still apply for joining heists
+  - More intuitive cooldown system overall
+
+- **Message Field Names**
+  - `msgCooldown` → `msgUserCooldown` (for consistency)
+  - Added `msgGlobalCooldown` for global cooldown messages
+  - Added `msgHeistInProgress` for better active heist guidance
+
+#### Fixed
+- **executeHeist() Bug**
+  - Fixed participants array manipulation order
+  - Individual cooldowns now set BEFORE clearing participants array
+  - Prevents state corruption during heist completion
+
+- **State Management**
+  - Added `heistState.initiator` tracking
+  - Proper cleanup when heists complete with no participants
+  - No global cooldown if no one participated (fair play)
+
+#### Privacy & Documentation
+- **Security Notices**
+  - Added green privacy section in setup-widget.html
+  - Clearly explains that JWT Token & Channel ID are client-side only
+  - Emphasizes no data sent to external servers
+  - Improves user trust and transparency
+
+- **Updated Files**
+  - Both `widget/` and `cdn-deploy/` versions synchronized
+  - Privacy notices in setup instructions
+  - Enhanced inline code documentation
+
+### 🎮 User Experience Improvements
+The update focuses on preventing user confusion and improving gameplay flow:
+- No more heist spam after completion (global cooldown)
+- Clear messages explain why commands don't work
+- Helpful guidance directs users to join active heists
+- Better state management prevents edge case bugs
+
+---
+
 ## [2.1.1] - 2025-10-27
 
 ### 🔄 Reverted to Manual Configuration

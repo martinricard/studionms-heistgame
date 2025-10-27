@@ -14,11 +14,14 @@ A fully interactive text-based heist mini-game widget for StreamElements overlay
 - **💰 Real Points Integration** - Connects directly to StreamElements loyalty points system
 - **⏰ Countdown Timer** - Visual timer with optional 30s and 10s reminders
 - **🎨 Animated UI** - Beautiful gradient design with smooth animations
-- **�️ Full Customization** - Choose any Google Font, adjust colors, sizes, and styling
-- **�👥 Live Participant Tracking** - See who joined and their bets in real-time
+- **🎨 Full Customization** - Choose any Google Font, adjust colors, sizes, and styling
+- **👥 Live Participant Tracking** - See who joined and their bets in real-time
 - **🚫 Mod Controls** - Mods and streamers can cancel heists with refunds
+- **⏱️ Global Cooldown** - Prevents heist spam with configurable cooldown after completion
+- **💬 Smart User Guidance** - Helpful messages guide users to join active heists
 - **📱 Easy Configuration** - Change every message, command, color, and setting
 - **💬 Chat Integration** - Simple commands everyone can use
+- **🔒 Privacy First** - All credentials stay in your browser, no external data transmission
 
 ---
 
@@ -148,9 +151,10 @@ Set **"Show Visual Overlay"** to **"No"** for chat-only mode
 - ✅ Check "Show Visual Overlay" is enabled
 - ✅ Verify all 3 code files are pasted (HTML, CSS, JS)
 - ✅ Check browser console (F12) for errors
+- ✅ **IMPORTANT:** Widget must be loaded in OBS to function (even for chat-only mode)
 
 ### Points not working?
-- ✅ Confirm JWT Token is correct (from Show Secrets)
+- ✅ Confirm JWT Token is correct (from [Show Secrets](https://streamelements.com/dashboard/account/channels))
 - ✅ Verify Channel ID matches your account
 - ✅ Enable "Point Tracking" in settings
 - ✅ Ensure widget is loaded in OBS
@@ -159,6 +163,12 @@ Set **"Show Visual Overlay"** to **"No"** for chat-only mode
 - ✅ Check command names in settings
 - ✅ Look for conflicts with other widgets
 - ✅ Check console for JavaScript errors
+- ✅ Verify widget is loaded in OBS browser source
+
+### "Can't start heist" messages?
+- ✅ **Global cooldown active** - Heists have a cooldown period after completion (configurable in settings)
+- ✅ Check cooldown duration in **⚙️ Settings → Cooldown Minutes**
+- ✅ Wait for cooldown to expire before starting new heist
 
 ---
 
@@ -176,15 +186,26 @@ For bug reports, please include:
 
 ## 📝 Changelog
 
-### Version 0.01 (Alpha) - Current
-- ✨ Initial alpha release
-- ✅ Full StreamElements API integration
+### Version 0.01 (Alpha) - Current Release
+
+#### Latest Update: v2.1.2 (2025-10-27)
+- ✨ **Global Cooldown System** - Prevents heist spam with configurable cooldown
+- ✨ **Enhanced User Guidance** - Helpful messages when heist is active
+- ✨ **Separate Cooldown Messages** - Different messages for global vs individual cooldowns
+- 🐛 **Bug Fixes** - Fixed executeHeist() participants array bug
+- 🔒 **Privacy Notices** - Added security information in setup guide
+
+#### Previous Updates
+- ✅ Full StreamElements API integration with manual JWT configuration
 - ✅ Three customizable risk levels
 - ✅ Visual overlay with animations
 - ✅ Mod cancellation with refunds
 - ✅ Time reminders system
 - ✅ Cooldown management
 - ✅ Custom icons and messages
+- ✅ Privacy-first credential handling
+
+📚 **Full changelog:** See [CHANGELOG.md](./CHANGELOG.md) for complete version history
 
 ---
 
