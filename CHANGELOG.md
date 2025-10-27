@@ -2,6 +2,53 @@
 
 All notable changes to the StreamElements Heist Widget project.
 
+## [2.1.1] - 2025-10-27
+
+### 🔄 Reverted to Manual Configuration
+
+#### Changed
+- **Manual JWT Token + Channel ID Configuration**
+  - Reverted from automatic detection to manual credential input
+  - Requires JWT Token and Channel ID from StreamElements dashboard
+  - More reliable for OBS integration
+  - Bot API endpoint used for chat messages
+
+- **Chat Message Method**
+  - Using bot API endpoint: `/bot/{channelId}/say`
+  - Replaced SE_API.sendMessage() approach
+  - Better compatibility with OBS browser sources
+  - More consistent message delivery
+
+- **Documentation Updates**
+  - Updated `fields.json` with "REQUIRED" labels for credentials
+  - Updated `setup-widget.html` with manual configuration instructions
+  - Corrected credential URL to channels page with Show Secrets
+  - Removed unnecessary fields and redundant documentation
+
+#### Removed
+- Auto-detection logic from widget load
+- SE_API.sendMessage() integration
+- Editor mode detection code
+- Non-functional clickable links in overlay
+
+#### Fixed
+- Chat messages not working in OBS with auto-detection
+- Widget now requires explicit credential configuration
+- Improved reliability for live streaming scenarios
+
+### 🎯 Why This Change?
+Testing revealed that the SE_API auto-detection approach wasn't working reliably in OBS browser sources during live streaming. Manual configuration with the bot API endpoint provides better stability and compatibility.
+
+### 📝 Migration
+If you installed version 2.1.0:
+1. Go to streamelements.com/dashboard/account/channels
+2. Click "Show Secrets"
+3. Copy your JWT Token and Channel ID
+4. Paste them into the widget's 🔑 API settings section
+5. Widget will now work reliably in OBS
+
+---
+
 ## [2.1.0] - 2025-10-25
 
 ### 🎯 Major Refactor: Separated Files & Professional Field Layout

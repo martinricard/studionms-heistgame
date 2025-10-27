@@ -54,9 +54,10 @@ StreamElement Heist Widget/
    - **Fields Tab:** Paste contents of `src/fields.json`
 
 3. **Configure API (Required)**
-   - Get your **JWT Token** from [StreamElements Account](https://streamelements.com/dashboard/account/channels)
-   - Get your **Account ID** from the same page
-   - Paste both into widget settings
+   - Go to [StreamElements Channels](https://streamelements.com/dashboard/account/channels)
+   - Click **"Show Secrets"**
+   - Copy your **JWT Token** and **Channel ID**
+   - Paste both into widget settings under **🔑 API**
    - Enable **"Point Tracking"
 
 4. **Save and Test!**
@@ -149,9 +150,10 @@ Set **"Show Visual Overlay"** to **"No"** for chat-only mode
 - ✅ Check browser console (F12) for errors
 
 ### Points not working?
-- ✅ Confirm JWT Token is correct
-- ✅ Verify Account ID matches your account
+- ✅ Confirm JWT Token is correct (from Show Secrets)
+- ✅ Verify Channel ID matches your account
 - ✅ Enable "Point Tracking" in settings
+- ✅ Ensure widget is loaded in OBS
 
 ### Commands not responding?
 - ✅ Check command names in settings
