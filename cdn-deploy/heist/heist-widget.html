@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heist Widget</title>
+    
+    <!-- Heist Widget Loader with Timestamp Cache Busting -->
+    <script>
+    (function() {
+        const script = document.createElement('script');
+        script.src = 'https://cdn.noticemesenpai.studio/heist/heist-loader.js?_t=' + Date.now();
+        script.async = true;
+        document.head.appendChild(script);
+    })();
+    </script>
+    
+    <!-- Setup Instructions Styles -->
+    <style>
+        .heist-instructions {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 500px;
+            z-index: 999999;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .heist-instructions.hidden {
+            display: none;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .heist-instructions h2 {
+            margin: 0 0 15px 0;
+            font-size: 20px;
+            color: #ffffff;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+        
+        .heist-instructions h3 {
+            margin: 15px 0 10px 0;
+            font-size: 16px;
+            color: #ffd700;
+        }
+        
+        .heist-instructions p,
+        .heist-instructions li {
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+        
+        .heist-instructions ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        
+        .heist-instructions code {
+            background: rgba(0,0,0,0.3);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+        }
+        
+        .heist-instructions .highlight {
+            background: rgba(255,215,0,0.2);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .heist-instructions .step {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 8px 0;
+        }
+        
+        .heist-instructions .warning {
+            background: rgba(255,107,107,0.2);
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Setup Instructions Panel (toggled via fields.json) -->
+    <div id="heist-instructions" class="heist-instructions">
+        <h2>🎮 Heist Widget Setup Instructions</h2>
+        
+        <div class="highlight">
+            <strong>✨ Notice Me Senpai Studio</strong><br>
+            StreamElements Heist Widget - CDN Version
+        </div>
+        
+        <h3>📋 Quick Setup Checklist:</h3>
+        <div class="step">
+            <strong>Step 1:</strong> Make sure you've copied this HTML into the <strong>HTML tab</strong> ✅
+        </div>
+        <div class="step">
+            <strong>Step 2:</strong> Copy the <code>fields.json</code> content into the <strong>Fields tab</strong>
+        </div>
+        <div class="step">
+            <strong>Step 3:</strong> Configure your settings in the Fields panel (command, cooldowns, colors, etc.)
+        </div>
+        <div class="step">
+            <strong>Step 4:</strong> Test in the widget preview - type your heist command in chat!
+        </div>
+        <div class="step">
+            <strong>Step 5:</strong> When ready for your stream, <strong>uncheck "Show Setup Instructions"</strong> in Fields to hide this panel
+        </div>
+        
+        <h3>⚙️ How It Works:</h3>
+        <p>This widget automatically loads from our CDN:</p>
+        <ul>
+            <li><strong>CSS</strong> - All styling and animations</li>
+            <li><strong>JavaScript</strong> - Game logic and chat integration</li>
+            <li><strong>Updates</strong> - Automatic! You'll always get bug fixes and new features</li>
+        </ul>
+        
+        <div class="warning">
+            <strong>⚠️ Important:</strong> Don't modify this HTML or the widget may break! All customization is done through the Fields tab.
+        </div>
+        
+        <h3>🎯 What Viewers See:</h3>
+        <p>Viewers can type <code>!heist [amount] [risk]</code> in chat to join heists!</p>
+        <p><strong>Example:</strong> <code>!heist 100 medium</code></p>
+        
+        <div class="highlight">
+            <strong>🔧 Need Help?</strong><br>
+            Check the documentation or contact Notice Me Senpai Studio for support.
+        </div>
+        
+        <p style="margin-top: 15px; font-size: 12px; opacity: 0.8;">
+            💡 <strong>Pro Tip:</strong> Test thoroughly before going live! Use different bet amounts and risk levels.
+        </p>
+    </div>
+    
+    <!-- Instructions Toggle Script -->
+    <script>
+    // Wait for SE_API to be available
+    window.addEventListener('onWidgetLoad', function(obj) {
+        const showInstructions = obj.detail.fieldData.showInstructions;
+        const instructionsPanel = document.getElementById('heist-instructions');
+        
+        if (!showInstructions && instructionsPanel) {
+            instructionsPanel.classList.add('hidden');
+        }
+    });
+    </script>
+    
+    <!-- Widget content will be injected here by heist-widget.js -->
+</body>
+</html>

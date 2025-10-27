@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamElements Heist Widget - Studio NMS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .hero p {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .features {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        
+        .benefits {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+        
+        .benefits-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #667eea;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .benefit-item .icon {
+            font-size: 2em;
+            margin-right: 20px;
+            min-width: 50px;
+        }
+        
+        .benefit-item h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .pricing {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #667eea;
+        }
+        
+        .price-box {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 20px;
+            padding: 50px;
+            margin: 30px 0;
+        }
+        
+        .price {
+            font-size: 3.5em;
+            font-weight: 800;
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .price-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+        
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1em;
+        }
+        
+        .price-features li:before {
+            content: "✓ ";
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .testimonial-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial blockquote {
+            font-size: 1.5em;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial cite {
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        .footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+            
+            .hero p {
+                font-size: 1.1em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>🎮 StreamElements Heist Widget</h1>
+        <p>Transform Your Stream with Interactive Loyalty Points Gameplay</p>
+        <a href="#buy" class="cta-button">Get Started - $14.99</a>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature">
+            <div class="feature-icon">🎯</div>
+            <h3>3 Risk Levels</h3>
+            <p>Low, Medium, and High risk options with customizable multipliers and success rates</p>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">🎨</div>
+            <h3>Fully Customizable</h3>
+            <p>Choose from 1000+ Google Fonts, 10 color pickers, and customize all messages</p>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">⚡</div>
+            <h3>Easy Setup</h3>
+            <p>2-minute installation via StreamElements share link. No coding required!</p>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">💰</div>
+            <h3>Real Points Integration</h3>
+            <p>Seamlessly integrates with StreamElements loyalty points system</p>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">🔄</div>
+            <h3>Lifetime Updates</h3>
+            <p>Automatic updates, new features, and bug fixes forever - at no extra cost</p>
+        </div>
+        
+        <div class="feature">
+            <div class="feature-icon">💜</div>
+            <h3>Pro Support</h3>
+            <p>Fast email support within 24 hours to help you get set up</p>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="benefits-content">
+            <h2>Why Streamers Love It</h2>
+            
+            <div class="benefit-item">
+                <div class="icon">📈</div>
+                <div>
+                    <h4>Boost Engagement</h4>
+                    <p>Viewers stay longer to participate in heists and watch results</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="icon">🎪</div>
+                <div>
+                    <h4>Create Excitement</h4>
+                    <p>Build suspense with countdown timers and dramatic heist results</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="icon">🏆</div>
+                <div>
+                    <h4>Reward Loyalty</h4>
+                    <p>Give active viewers fun ways to earn and spend loyalty points</p>
+                </div>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="icon">🎮</div>
+                <div>
+                    <h4>Zero Maintenance</h4>
+                    <p>Set it up once and it runs automatically - focus on streaming</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="buy">
+        <h2>Get Started Today</h2>
+        
+        <div class="price-box">
+            <div class="price">$14.99</div>
+            <p style="font-size: 1.2em; color: #666; margin-bottom: 30px;">One-time payment • Lifetime access</p>
+            
+            <ul class="price-features">
+                <li>Instant digital delivery</li>
+                <li>Pre-configured widget via share link</li>
+                <li>Full customization options</li>
+                <li>3 risk levels with adjustable rewards</li>
+                <li>Google Fonts integration</li>
+                <li>10 color customization options</li>
+                <li>Custom commands and messages</li>
+                <li>Lifetime updates (free forever)</li>
+                <li>Email support within 24 hours</li>
+                <li>30-day satisfaction guarantee</li>
+            </ul>
+            
+            <a href="https://www.etsy.com/shop/YourShopName" class="cta-button" style="margin-top: 30px;">Buy on Etsy</a>
+        </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+        <div class="testimonial-content">
+            <blockquote>"This heist widget completely transformed my stream! Chat loves it and engagement is through the roof. Setup was incredibly easy!"</blockquote>
+            <cite>- Happy Streamer</cite>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><strong>Studio NMS - Notice Me Senpai Studio</strong></p>
+        <p>Professional streaming tools for content creators</p>
+        <p style="margin-top: 20px;">
+            <a href="mailto:contact@noticemesenpai.studio">contact@noticemesenpai.studio</a> | 
+            <a href="https://noticemesenpai.studio">noticemesenpai.studio</a>
+        </p>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">© 2025 Studio NMS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

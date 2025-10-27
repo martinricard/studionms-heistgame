@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heist Widget - Boost Stream Engagement | Studio NMS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+        }
+        
+        .nav {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: 800;
+            color: #5a67d8;
+        }
+        
+        .nav-cta {
+            background: #5a67d8;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        
+        .nav-cta:hover {
+            background: #4c51bf;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 20px;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        
+        .hero-text p {
+            font-size: 1.4em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .hero-cta {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .hero-cta:hover {
+            transform: translateY(-3px);
+        }
+        
+        .hero-image {
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            font-size: 8em;
+        }
+        
+        .social-proof {
+            background: #f7fafc;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .social-proof h3 {
+            color: #718096;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .proof-stats {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .proof-stat {
+            text-align: center;
+        }
+        
+        .proof-number {
+            font-size: 3.5em;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .proof-label {
+            color: #718096;
+            font-size: 1.1em;
+        }
+        
+        .problem-solution {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+        
+        .problem {
+            background: #fff5f5;
+            border-left: 5px solid #fc8181;
+            padding: 40px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+        }
+        
+        .problem h2 {
+            color: #c53030;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .problem p {
+            color: #742a2a;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        
+        .solution {
+            background: #f0fff4;
+            border-left: 5px solid #48bb78;
+            padding: 40px;
+            border-radius: 10px;
+        }
+        
+        .solution h2 {
+            color: #276749;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .solution p {
+            color: #22543d;
+            font-size: 1.2em;
+            line-height: 1.8;
+        }
+        
+        .features {
+            background: white;
+            padding: 100px 20px;
+        }
+        
+        .features-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 70px;
+            color: #2d3748;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .feature {
+            background: #f7fafc;
+            padding: 40px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+        }
+        
+        .feature h3 {
+            font-size: 1.6em;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        
+        .feature p {
+            color: #718096;
+            font-size: 1.1em;
+        }
+        
+        .comparison {
+            background: #edf2f7;
+            padding: 100px 20px;
+        }
+        
+        .comparison-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .comparison h2 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #2d3748;
+        }
+        
+        .comparison-table {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .comparison-row:first-child {
+            background: #667eea;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .comparison-cell {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .comparison-cell:first-child {
+            text-align: left;
+        }
+        
+        .check {
+            color: #48bb78;
+            font-size: 1.5em;
+        }
+        
+        .cross {
+            color: #fc8181;
+            font-size: 1.5em;
+        }
+        
+        .pricing {
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .pricing-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .pricing h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+        
+        .pricing-subtitle {
+            font-size: 1.3em;
+            color: #718096;
+            margin-bottom: 50px;
+        }
+        
+        .pricing-box {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 25px;
+            padding: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .price-tag {
+            font-size: 4.5em;
+            font-weight: 900;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .price-period {
+            color: #718096;
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        
+        .features-list {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+        
+        .features-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 1.1em;
+            color: #4a5568;
+        }
+        
+        .features-list li:before {
+            content: "✓";
+            color: #48bb78;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-right: 15px;
+        }
+        
+        .guarantee {
+            background: #fef5e7;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 30px;
+            border: 2px solid #f59e0b;
+        }
+        
+        .guarantee h4 {
+            color: #d97706;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+        }
+        
+        .guarantee p {
+            color: #92400e;
+        }
+        
+        .faq {
+            background: #f7fafc;
+            padding: 100px 20px;
+        }
+        
+        .faq-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq h2 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 60px;
+            color: #2d3748;
+        }
+        
+        .faq-item {
+            background: white;
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .faq-item h4 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        
+        .faq-item p {
+            color: #718096;
+            font-size: 1.1em;
+        }
+        
+        .final-cta {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            font-weight: 900;
+        }
+        
+        .final-cta p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        .final-cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 25px 60px;
+            font-size: 1.4em;
+            text-decoration: none;
+            border-radius: 15px;
+            font-weight: 800;
+            transition: transform 0.3s ease;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .final-cta-button:hover {
+            transform: scale(1.05);
+        }
+        
+        .footer {
+            background: #2d3748;
+            color: #a0aec0;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.5em;
+            }
+            
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-cell {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-content">
+            <div class="logo">🎮 Studio NMS</div>
+            <a href="#pricing" class="nav-cta">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Turn Your Chat Into a Casino</h1>
+                <p>The StreamElements heist widget that actually gets your viewers engaged. Setup in 2 minutes.</p>
+                <a href="#pricing" class="hero-cta">Get It Now - $14.99</a>
+            </div>
+            <div class="hero-image">
+                🎰💰🎲
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <h3>Trusted by streamers who care about quality</h3>
+        <div class="proof-stats">
+            <div class="proof-stat">
+                <div class="proof-number">2min</div>
+                <div class="proof-label">Setup Time</div>
+            </div>
+            <div class="proof-stat">
+                <div class="proof-number">24hr</div>
+                <div class="proof-label">Support Response</div>
+            </div>
+            <div class="proof-stat">
+                <div class="proof-number">100%</div>
+                <div class="proof-label">Customizable</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem/Solution -->
+    <section class="problem-solution">
+        <div class="problem">
+            <h2>😴 The Problem</h2>
+            <p>Your chat is dead during slow gameplay. Viewers lurk instead of participating. Your loyalty points system is boring and underutilized. You need interactive content but don't have time to code custom solutions.</p>
+        </div>
+        
+        <div class="solution">
+            <h2>✨ The Solution</h2>
+            <p>Heist Widget transforms your loyalty points into an exciting mini-game. Viewers actively participate, chat explodes with activity, and you get all of this in 2 minutes without touching a single line of code.</p>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="features-content">
+            <h2>Everything You Need, Nothing You Don't</h2>
+            
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Instant Setup</h3>
+                    <p>Click link, add to overlay, enter credentials. Done. No files to download or code to paste.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Your Brand</h3>
+                    <p>10 color pickers, 1000+ fonts, custom messages. Make it look like it was built just for you.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Balanced Economy</h3>
+                    <p>3 risk levels with adjustable multipliers. Keep your points economy healthy and fair.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Auto Updates</h3>
+                    <p>Hosted on our servers. Get bug fixes and new features without lifting a finger.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>Chat Integration</h3>
+                    <p>Works with StreamElements bot. All messages customizable. Multi-language support.</p>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Rock Solid</h3>
+                    <p>Professional code with error handling. Tested edge cases. Won't break your stream.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Table -->
+    <section class="comparison">
+        <div class="comparison-content">
+            <h2>How We Compare</h2>
+            
+            <div class="comparison-table">
+                <div class="comparison-row">
+                    <div class="comparison-cell">Feature</div>
+                    <div class="comparison-cell">Heist Widget</div>
+                    <div class="comparison-cell">Others</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Setup Time</div>
+                    <div class="comparison-cell"><span class="check">✓</span> 2 minutes</div>
+                    <div class="comparison-cell"><span class="cross">✗</span> 30+ minutes</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">File Management</div>
+                    <div class="comparison-cell"><span class="check">✓</span> Just a link</div>
+                    <div class="comparison-cell"><span class="cross">✗</span> Multiple files</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Customization</div>
+                    <div class="comparison-cell"><span class="check">✓</span> Full control</div>
+                    <div class="comparison-cell"><span class="cross">✗</span> Limited options</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Updates</div>
+                    <div class="comparison-cell"><span class="check">✓</span> Automatic</div>
+                    <div class="comparison-cell"><span class="cross">✗</span> Manual</div>
+                </div>
+                <div class="comparison-row">
+                    <div class="comparison-cell">Support</div>
+                    <div class="comparison-cell"><span class="check">✓</span> 24 hours</div>
+                    <div class="comparison-cell"><span class="cross">✗</span> Community forums</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
+        <div class="pricing-content">
+            <h2>One Price. No Subscriptions.</h2>
+            <p class="pricing-subtitle">Pay once, use forever</p>
+            
+            <div class="pricing-box">
+                <div class="price-tag">$14.99</div>
+                <p class="price-period">One-time payment</p>
+                
+                <ul class="features-list">
+                    <li>Instant delivery via share link</li>
+                    <li>Pre-configured widget</li>
+                    <li>Full customization access</li>
+                    <li>3 risk levels (low/medium/high)</li>
+                    <li>1000+ Google Fonts</li>
+                    <li>10 color options</li>
+                    <li>Custom commands & messages</li>
+                    <li>Lifetime free updates</li>
+                    <li>24-hour email support</li>
+                </ul>
+                
+                <a href="https://www.etsy.com/shop/YourShopName" class="hero-cta" style="display: block; text-align: center;">Buy on Etsy</a>
+                
+                <div class="guarantee">
+                    <h4>🛡️ 30-Day Money Back Guarantee</h4>
+                    <p>Not happy? Full refund, no questions asked.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq">
+        <div class="faq-content">
+            <h2>Common Questions</h2>
+            
+            <div class="faq-item">
+                <h4>How long does setup take?</h4>
+                <p>About 2 minutes. Click the share link, add to your overlay, enter your StreamElements credentials. Done.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Do I need coding knowledge?</h4>
+                <p>Zero coding required. Everything is done through StreamElements' visual interface.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>What if I need help?</h4>
+                <p>Email support at contact@noticemesenpai.studio. We respond within 24 hours.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>Can I customize everything?</h4>
+                <p>Yes. Colors, fonts, messages, risk levels, multipliers, commands - everything is adjustable.</p>
+            </div>
+            
+            <div class="faq-item">
+                <h4>How do updates work?</h4>
+                <p>Automatic. The widget is hosted on our servers, so updates happen instantly without any action from you.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <h2>Ready to Boost Engagement?</h2>
+        <p>Join streamers who are making their chat more active</p>
+        <a href="https://www.etsy.com/shop/YourShopName" class="final-cta-button">Get Heist Widget Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p style="font-size: 1.3em; margin-bottom: 20px;"><strong>Studio NMS</strong></p>
+        <p>Professional streaming tools built by streamers, for streamers</p>
+        <p style="margin-top: 30px;">
+            <a href="mailto:contact@noticemesenpai.studio">contact@noticemesenpai.studio</a>
+        </p>
+        <p style="margin-top: 40px; opacity: 0.6;">© 2025 Studio NMS. All rights reserved.</p>
+    </footer>
+</body>
+</html>

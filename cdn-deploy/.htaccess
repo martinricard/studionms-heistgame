@@ -1,0 +1,54 @@
+# ==========================================
+# Notice Me Senpai Studio - CDN Configuration
+# cdn.noticemesenpai.studio
+# ==========================================
+
+# Enable CORS - Allow widgets to be loaded from any StreamElements overlay
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+    Header set Access-Control-Max-Age "3600"
+</IfModule>
+
+# Enable Compression - Faster loading
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE text/html
+</IfModule>
+
+# Browser Caching - Cache files for 1 week
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType text/css "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+    ExpiresByType text/javascript "access plus 1 week"
+    ExpiresByType image/png "access plus 1 month"
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/gif "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+# Security Headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# Force HTTPS (after SSL is set up)
+# Uncomment these lines once your SSL certificate is active
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# Prevent directory browsing
+Options -Indexes
+
+# Custom error pages (optional)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html

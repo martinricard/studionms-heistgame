@@ -1,0 +1,373 @@
+{
+  "separe0": {
+    "type": "hidden",
+    "label": "⚙️ ⋮ General Settings",
+    "value": "",
+    "group": "⚙️ Settings"
+  },
+  "minBet": {
+    "type": "number",
+    "label": "Minimum Bet",
+    "value": 10,
+    "min": 1,
+    "max": 10000,
+    "group": "⚙️ Settings"
+  },
+  "maxBet": {
+    "type": "number",
+    "label": "Maximum Bet",
+    "value": 10000,
+    "min": 10,
+    "max": 1000000,
+    "group": "⚙️ Settings"
+  },
+  "cooldownMinutes": {
+    "type": "number",
+    "label": "Cooldown (Minutes)",
+    "value": 5,
+    "min": 0,
+    "max": 60,
+    "group": "⚙️ Settings"
+  },
+  "heistDuration": {
+    "type": "number",
+    "label": "Join Duration (Seconds)",
+    "value": 60,
+    "min": 10,
+    "max": 300,
+    "group": "⚙️ Settings"
+  },
+  "separe1": {
+    "type": "hidden",
+    "label": "💬 ⋮ Chat Commands",
+    "value": "",
+    "group": "💬 Commands"
+  },
+  "commandHeist": {
+    "type": "textfield",
+    "label": "Start Heist Command",
+    "value": "!heist",
+    "placeholder": "!heist",
+    "group": "💬 Commands"
+  },
+  "commandJoin": {
+    "type": "textfield",
+    "label": "Join Heist Command",
+    "value": "!join",
+    "placeholder": "!join",
+    "group": "💬 Commands"
+  },
+  "separe2": {
+    "type": "hidden",
+    "label": "🎯 ⋮ Low Risk Settings",
+    "value": "",
+    "group": "🎯 Low Risk"
+  },
+  "lowRiskName": {
+    "type": "textfield",
+    "label": "Low Risk Name",
+    "value": "Bank Vault",
+    "placeholder": "Bank Vault",
+    "group": "🎯 Low Risk"
+  },
+  "lowSuccessRate": {
+    "type": "slider",
+    "label": "Success Rate (%)",
+    "value": 70,
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "group": "🎯 Low Risk"
+  },
+  "lowMultiplierMin": {
+    "type": "slider",
+    "label": "Min Multiplier",
+    "value": 1.2,
+    "min": 1.0,
+    "max": 5.0,
+    "step": 0.1,
+    "group": "🎯 Low Risk"
+  },
+  "lowMultiplierMax": {
+    "type": "slider",
+    "label": "Max Multiplier",
+    "value": 1.5,
+    "min": 1.0,
+    "max": 5.0,
+    "step": 0.1,
+    "group": "🎯 Low Risk"
+  },
+  "separe3": {
+    "type": "hidden",
+    "label": "⚡ ⋮ Medium Risk Settings",
+    "value": "",
+    "group": "⚡ Medium Risk"
+  },
+  "mediumRiskName": {
+    "type": "textfield",
+    "label": "Medium Risk Name",
+    "value": "Diamond Heist",
+    "placeholder": "Diamond Heist",
+    "group": "⚡ Medium Risk"
+  },
+  "mediumSuccessRate": {
+    "type": "slider",
+    "label": "Success Rate (%)",
+    "value": 50,
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "group": "⚡ Medium Risk"
+  },
+  "mediumMultiplierMin": {
+    "type": "slider",
+    "label": "Min Multiplier",
+    "value": 1.5,
+    "min": 1.0,
+    "max": 5.0,
+    "step": 0.1,
+    "group": "⚡ Medium Risk"
+  },
+  "mediumMultiplierMax": {
+    "type": "slider",
+    "label": "Max Multiplier",
+    "value": 2.5,
+    "min": 1.0,
+    "max": 5.0,
+    "step": 0.1,
+    "group": "⚡ Medium Risk"
+  },
+  "separe4": {
+    "type": "hidden",
+    "label": "🔥 ⋮ High Risk Settings",
+    "value": "",
+    "group": "🔥 High Risk"
+  },
+  "highRiskName": {
+    "type": "textfield",
+    "label": "High Risk Name",
+    "value": "Casino Jackpot",
+    "placeholder": "Casino Jackpot",
+    "group": "🔥 High Risk"
+  },
+  "highSuccessRate": {
+    "type": "slider",
+    "label": "Success Rate (%)",
+    "value": 30,
+    "min": 0,
+    "max": 100,
+    "step": 5,
+    "group": "🔥 High Risk"
+  },
+  "highMultiplierMin": {
+    "type": "slider",
+    "label": "Min Multiplier",
+    "value": 2.5,
+    "min": 1.0,
+    "max": 10.0,
+    "step": 0.1,
+    "group": "🔥 High Risk"
+  },
+  "highMultiplierMax": {
+    "type": "slider",
+    "label": "Max Multiplier",
+    "value": 4.0,
+    "min": 1.0,
+    "max": 10.0,
+    "step": 0.1,
+    "group": "🔥 High Risk"
+  },
+  "separe5": {
+    "type": "hidden",
+    "label": "💾 ⋮ Points Tracking",
+    "value": "",
+    "group": "💾 Points"
+  },
+  "jwtToken": {
+    "type": "text",
+    "label": "StreamElements JWT Token (for real points)",
+    "value": "",
+    "placeholder": "Get from streamelements.com/dashboard/account/channels",
+    "group": "💾 Points"
+  },
+  "channelId": {
+    "type": "text",
+    "label": "Channel ID",
+    "value": "",
+    "placeholder": "Your StreamElements channel ID",
+    "group": "💾 Points"
+  },
+  "enablePointTracking": {
+    "type": "dropdown",
+    "label": "Enable Point Tracking",
+    "value": "true",
+    "options": {
+      "true": "Yes - Use Real SE Points",
+      "false": "No - Visual Only"
+    },
+    "group": "💾 Points"
+  },
+  "separe6": {
+    "type": "hidden",
+    "label": "� ⋮ Emote Customization",
+    "value": "",
+    "group": "😀 Emotes"
+  },
+  "emoteStart": {
+    "type": "textfield",
+    "label": "Heist Start Emote",
+    "value": "🚨",
+    "placeholder": "🚨",
+    "group": "😀 Emotes"
+  },
+  "emoteSuccess": {
+    "type": "textfield",
+    "label": "Success Emote",
+    "value": "💰",
+    "placeholder": "💰",
+    "group": "😀 Emotes"
+  },
+  "emoteFailure": {
+    "type": "textfield",
+    "label": "Failure Emote",
+    "value": "💥",
+    "placeholder": "💥",
+    "group": "😀 Emotes"
+  },
+  "emoteJoined": {
+    "type": "textfield",
+    "label": "Joined Emote",
+    "value": "✅",
+    "placeholder": "✅",
+    "group": "😀 Emotes"
+  },
+  "emoteError": {
+    "type": "textfield",
+    "label": "Error Emote",
+    "value": "❌",
+    "placeholder": "❌",
+    "group": "😀 Emotes"
+  },
+  "emoteWarning": {
+    "type": "textfield",
+    "label": "Warning Emote",
+    "value": "⚠️",
+    "placeholder": "⚠️",
+    "group": "😀 Emotes"
+  },
+  "emoteCooldown": {
+    "type": "textfield",
+    "label": "Cooldown Emote",
+    "value": "⏰",
+    "placeholder": "⏰",
+    "group": "😀 Emotes"
+  },
+  "emoteComplete": {
+    "type": "textfield",
+    "label": "Heist Complete Emote",
+    "value": "🎭",
+    "placeholder": "🎭",
+    "group": "😀 Emotes"
+  },
+  "emoteGame": {
+    "type": "textfield",
+    "label": "Game Ready Emote",
+    "value": "🎮",
+    "placeholder": "🎮",
+    "group": "😀 Emotes"
+  },
+  "separe7": {
+    "type": "hidden",
+    "label": "�💬 ⋮ Chat Messages",
+    "value": "",
+    "group": "💬 Messages"
+  },
+  "enableWelcome": {
+    "type": "dropdown",
+    "label": "Show Welcome Message",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "group": "💬 Messages"
+  },
+  "msgWelcome": {
+    "type": "textfield",
+    "label": "Welcome Message",
+    "value": "Heist game is ready! Type !heist to start!",
+    "group": "💬 Messages"
+  },
+  "msgHeistStart": {
+    "type": "textfield",
+    "label": "Heist Start",
+    "value": "Heist starting! Type !join [amount] [risk] to join!",
+    "group": "💬 Messages"
+  },
+  "msgHeistInProgress": {
+    "type": "textfield",
+    "label": "Heist In Progress",
+    "value": "A heist is already in progress!",
+    "group": "💬 Messages"
+  },
+  "msgNoActiveHeist": {
+    "type": "textfield",
+    "label": "No Active Heist",
+    "value": "No heist is currently active! Wait for someone to start one with !heist",
+    "group": "💬 Messages"
+  },
+  "msgCooldown": {
+    "type": "textfield",
+    "label": "Cooldown Message",
+    "value": "{user}, you must wait {time} before joining another heist!",
+    "group": "💬 Messages"
+  },
+  "msgJoined": {
+    "type": "textfield",
+    "label": "Joined Message",
+    "value": "{user} joined with {amount} {currency} at {risk} risk!",
+    "group": "💬 Messages"
+  },
+  "msgNotEnoughPoints": {
+    "type": "textfield",
+    "label": "Not Enough Points",
+    "value": "{user}, you don't have enough {currency}!",
+    "group": "💬 Messages"
+  },
+  "msgInvalidAmount": {
+    "type": "textfield",
+    "label": "Invalid Amount",
+    "value": "Invalid amount! Min: {min}, Max: {max}",
+    "group": "💬 Messages"
+  },
+  "msgHeistResults": {
+    "type": "textfield",
+    "label": "Heist Results",
+    "value": "Heist complete! {successCount}/{totalCount} succeeded!",
+    "group": "💬 Messages"
+  },
+  "msgSuccess": {
+    "type": "textfield",
+    "label": "Success Message",
+    "value": "{user} succeeded and won {amount} {currency}!",
+    "group": "💬 Messages"
+  },
+  "msgFailure": {
+    "type": "textfield",
+    "label": "Failure Message",
+    "value": "{user} failed and lost {amount} {currency}!",
+    "group": "💬 Messages"
+  },
+  "msgNoParticipants": {
+    "type": "textfield",
+    "label": "No Participants",
+    "value": "No one joined the heist!",
+    "group": "💬 Messages"
+  },
+  "version": {
+    "type": "hidden",
+    "label": "Heist Widget v1.0",
+    "value": "",
+    "group": "ℹ️ ⋮ Info"
+  }
+}

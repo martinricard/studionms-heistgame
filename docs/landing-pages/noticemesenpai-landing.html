@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studio Notice Me Senpai</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background: #000000;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        /* Logo Styling */
+        .logo {
+            margin-bottom: 80px;
+            display: inline-block;
+        }
+        
+        .logo img {
+            max-width: 90%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Newsletter Form */
+        .newsletter {
+            margin: 60px 0;
+        }
+        
+        .email-input {
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #ffffff;
+            color: #ffffff;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 18px;
+            font-style: italic;
+            padding: 12px 20px;
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            outline: none;
+            margin-bottom: 25px;
+        }
+        
+        .email-input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+            font-style: italic;
+        }
+        
+        .subscribe-btn {
+            background: #ff0099;
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-style: italic;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 4px 4px 0px #000000;
+            margin-bottom: 10px;
+        }
+        
+        .subscribe-btn:hover {
+            background: #cc0077;
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #000000;
+        }
+        
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .btn {
+            padding: 18px 40px;
+            font-size: 20px;
+            font-family: 'Courier New', Courier, monospace;
+            font-style: italic;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 5px 5px 0px #000000;
+        }
+        
+        .btn-etsy {
+            background: #00d9ff;
+            color: #000000;
+        }
+        
+        .btn-etsy:hover {
+            background: #00b8d9;
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px #000000;
+        }
+        
+        .btn-contact {
+            background: #ffff00;
+            color: #000000;
+        }
+        
+        .btn-contact:hover {
+            background: #e6e600;
+            transform: translate(-2px, -2px);
+            box-shadow: 7px 7px 0px #000000;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo img {
+                max-width: 100%;
+            }
+            
+            .btn {
+                font-size: 18px;
+                padding: 15px 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Logo Notice Me Senpai.png" alt="Studio Notice Me Senpai">
+        </div>
+        
+        <!-- Newsletter Signup -->
+        <div class="newsletter">
+            <form id="newsletter-form" action="#" method="post">
+                <input 
+                    type="email" 
+                    class="email-input" 
+                    placeholder="email address" 
+                    required
+                    name="email"
+                    id="email"
+                />
+                <br>
+                <button type="submit" class="subscribe-btn">subscribe</button>
+            </form>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <a href="https://www.etsy.com/shop/YourShopName" class="btn btn-etsy" target="_blank">
+                shop etsy shop
+            </a>
+            <a href="mailto:contact@noticemesenpai.studio" class="btn btn-contact">
+                contact us
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        // Newsletter form submission handler
+        document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            
+            // Replace with your actual newsletter service endpoint
+            // Example: Mailchimp, ConvertKit, etc.
+            console.log('Newsletter signup:', email);
+            
+            alert('Thank you for subscribing! 💜');
+            document.getElementById('email').value = '';
+        });
+    </script>
+</body>
+</html>
