@@ -17,19 +17,7 @@ let currencyName = 'points'; // Loyalty point name (fetched from SE API)
 let isInitialized = false; // Prevent double initialization in editor mode
 let eventListenerAttached = false; // Prevent duplicate event listeners
 
-// Editor mode detection
-// Live overlay: window.self === window.top (not in iframe)
-// Editor preview: window.self !== window.top (in iframe)
-let isEditorMode = false;
-try {
-  isEditorMode = (window.self !== window.top);
-  console.log('[Heist Widget] 🔍 URL:', window.location.href);
-  console.log('[Heist Widget] 🔍 In iframe (Editor Preview):', window.self !== window.top);
-  console.log('[Heist Widget] 🔍 EDITOR MODE:', isEditorMode);
-} catch (e) {
-  console.error('[Heist Widget] Error detecting editor mode:', e);
-  isEditorMode = false;
-}
+
 
 // Heist game state management
 let heistState = {
@@ -262,17 +250,14 @@ window.addEventListener('onWidgetLoad', async function(obj) {
   
   fieldData = obj.detail.fieldData;
   
-  // Double-check editor mode on widget load
-  try {
-    // Editor preview is always in an iframe
-    isEditorMode = (window.self !== window.top);
-    console.log('[Heist Widget] 📋 Widget Load - URL:', window.location.href);
-    console.log('[Heist Widget] 📋 Widget Load - In iframe:', window.self !== window.top);
-    console.log('[Heist Widget] 📋 Widget Load - EDITOR MODE:', isEditorMode);
-  } catch (e) {
-    console.error('[Heist Widget] Error re-checking editor mode:', e);
-    isEditorMode = false;
+  // Validate required credentials
+  if (!fieldData.jwtToken || !fieldData.channelId) {
+    console.error('[Heist Widget] ⚠️ Missing required credentials!');
+    console.error('[Heist Widget] Please configure JWT Token and Channel ID in widget settings');
+    return;
   }
+  
+  console.log('[Heist Widget] ✅ Credentials configured');
   
   // Get currency name from field settings first (fallback)
   currencyName = fieldData.currencyName || 'points';
@@ -344,8 +329,6 @@ if (!eventListenerAttached) {
     if (!obj.detail) return;
     
     const { listener, event } = obj.detail;
-    
-    console.log('[Heist Widget] 📨 Event received. Editor mode:', isEditorMode);
     
     // Only process chat messages
     if (listener !== 'message') return;
@@ -591,7 +574,7 @@ function startHeist(initiator) {
   const msg = fieldData.msgHeistStart || 'Heist starting! Type !join [amount] [risk] to join!';
   sendChatMessage(msg);
 
-  console.log('[Heist Widget] Heist started by', initiator, '(Editor mode:', isEditorMode, ')');
+  console.log('[Heist Widget] Heist started by', initiator);
 }
 
 async function joinHeist(username, userId, amount, risk, event) {
@@ -794,35 +777,30 @@ async function executeHeist() {
 // ===========================
 // CHAT INTEGRATION
 // ===========================
-async function sendChatMessage(message) {
-  console.log('[Heist Widget] 💬 Sending message to chat:', message);
-  
+function sendChatMessage(message) {
   if (!fieldData.jwtToken || !fieldData.channelId) {
-    console.warn('[Heist Widget] JWT token or Channel ID not configured');
+    console.warn('[Heist Widget] Cannot send message - missing credentials');
     return;
   }
-  
-  try {
-    // Use StreamElements bot say endpoint (original working method)
-    const response = await fetch(`https://api.streamelements.com/kappa/v2/bot/${fieldData.channelId}/say`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${fieldData.jwtToken}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        message: message
-      })
-    });
-    
+
+  console.log('[Heist Widget] Sending message to chat:', message);
+
+  fetch(`https://api.streamelements.com/kappa/v2/bot/${fieldData.channelId}/say`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${fieldData.jwtToken}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ message })
+  })
+  .then(response => {
     if (response.ok) {
       console.log('[Heist Widget] ✅ Message sent successfully');
     } else {
-      const errorText = await response.text();
       console.error('[Heist Widget] ❌ Failed to send message. Status:', response.status);
-      console.error('[Heist Widget] Error:', errorText);
     }
-  } catch (error) {
+  })
+  .catch(error => {
     console.error('[Heist Widget] ❌ Error sending message:', error);
-  }
+  });
 }

@@ -1,6 +1,197 @@
 {
   "separe0": {
     "type": "hidden",
+    "label": "👁️ ⋮ Visual Settings",
+    "value": "",
+    "group": "👁️ Visual"
+  },
+  "showVisual": {
+    "type": "dropdown",
+    "label": "Show Visual Overlay",
+    "value": "true",
+    "options": {
+      "true": "Yes - Show Overlay",
+      "false": "No - Chat Only"
+    },
+    "group": "👁️ Visual"
+  },
+  "widgetTitle": {
+    "type": "textfield",
+    "label": "Widget Title",
+    "value": "🎮 HEIST IN PROGRESS",
+    "placeholder": "🎮 HEIST IN PROGRESS",
+    "group": "👁️ Visual"
+  },
+  "showWidgetTitle": {
+    "type": "dropdown",
+    "label": "Show Widget Title",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "group": "👁️ Visual"
+  },
+  "widgetIcon": {
+    "type": "dropdown",
+    "label": "Widget Icon",
+    "value": "🚨",
+    "options": {
+      "🚨": "🚨 Siren",
+      "💀": "💀 Skull",
+      "💰": "💰 Money Bag",
+      "🎰": "🎰 Slot Machine",
+      "🎲": "🎲 Dice",
+      "🔫": "🔫 Gun",
+      "⚠️": "⚠️ Warning",
+      "🔥": "🔥 Fire",
+      "✨": "✨ Sparkles",
+      "🎮": "🎮 Game",
+      "custom": "Custom (use URL below)"
+    },
+    "group": "👁️ Visual"
+  },
+  "customIconUrl": {
+    "type": "text",
+    "label": "Custom Icon URL (if custom selected)",
+    "value": "",
+    "placeholder": "https://example.com/icon.png",
+    "group": "👁️ Visual"
+  },
+  "showParticipantCount": {
+    "type": "dropdown",
+    "label": "Show Participant Count",
+    "value": "true",
+    "options": {
+      "true": "Yes",
+      "false": "No"
+    },
+    "group": "👁️ Visual"
+  },
+  "separe0a": {
+    "type": "hidden",
+    "label": "🎨 ⋮ Font Settings",
+    "value": "",
+    "group": "👁️ Visual"
+  },
+  "fontFamily": {
+    "type": "googleFont",
+    "label": "Font Family",
+    "value": "Roboto",
+    "group": "👁️ Visual"
+  },
+  "fontWeight": {
+    "type": "dropdown",
+    "label": "Font Weight",
+    "value": "400",
+    "options": {
+      "100": "100 - Thin",
+      "200": "200 - Extra Light",
+      "300": "300 - Light",
+      "400": "400 - Regular",
+      "500": "500 - Medium",
+      "600": "600 - Semi Bold",
+      "700": "700 - Bold",
+      "800": "800 - Extra Bold",
+      "900": "900 - Black"
+    },
+    "group": "👁️ Visual"
+  },
+  "titleFontSize": {
+    "type": "slider",
+    "label": "Title Font Size (px)",
+    "value": 17,
+    "min": 12,
+    "max": 32,
+    "step": 1,
+    "group": "👁️ Visual"
+  },
+  "timerFontSize": {
+    "type": "slider",
+    "label": "Timer Font Size (px)",
+    "value": 28,
+    "min": 18,
+    "max": 42,
+    "step": 1,
+    "group": "👁️ Visual"
+  },
+  "participantFontSize": {
+    "type": "slider",
+    "label": "Participant Name Font Size (px)",
+    "value": 15,
+    "min": 11,
+    "max": 24,
+    "step": 1,
+    "group": "👁️ Visual"
+  },
+  "separe0c": {
+    "type": "hidden",
+    "label": "🎨 ⋮ Color Customization",
+    "value": "",
+    "group": "👁️ Visual"
+  },
+  "colorBackgroundDark": {
+    "type": "colorpicker",
+    "label": "Background Dark Color",
+    "value": "rgba(20, 22, 36, 0.98)",
+    "group": "👁️ Visual"
+  },
+  "colorBackgroundLight": {
+    "type": "colorpicker",
+    "label": "Background Light Color",
+    "value": "rgba(26, 28, 46, 0.98)",
+    "group": "👁️ Visual"
+  },
+  "colorTextPrimary": {
+    "type": "colorpicker",
+    "label": "Primary Text Color",
+    "value": "rgba(255, 255, 255, 1)",
+    "group": "👁️ Visual"
+  },
+  "colorTextSecondary": {
+    "type": "colorpicker",
+    "label": "Secondary Text Color",
+    "value": "rgba(180, 183, 201, 1)",
+    "group": "👁️ Visual"
+  },
+  "colorAccentBlue": {
+    "type": "colorpicker",
+    "label": "Accent Blue",
+    "value": "rgba(88, 101, 242, 1)",
+    "group": "👁️ Visual"
+  },
+  "colorAccentPurple": {
+    "type": "colorpicker",
+    "label": "Accent Purple",
+    "value": "rgba(155, 107, 255, 1)",
+    "group": "👁️ Visual"
+  },
+  "colorRiskLow": {
+    "type": "colorpicker",
+    "label": "Low Risk Color (Green)",
+    "value": "rgba(87, 242, 135, 1)",
+    "group": "👁️ Visual"
+  },
+  "colorRiskMedium": {
+    "type": "colorpicker",
+    "label": "Medium Risk Color (Orange)",
+    "value": "rgba(255, 169, 77, 1)",
+    "group": "👁️ Visual"
+  },
+  "colorRiskHigh": {
+    "type": "colorpicker",
+    "label": "High Risk Color (Red)",
+    "value": "rgba(237, 66, 69, 1)",
+    "group": "👁️ Visual"
+  },
+  "colorTimerBorder": {
+    "type": "colorpicker",
+    "label": "Timer Border Color",
+    "value": "rgba(88, 101, 242, 0.4)",
+    "group": "👁️ Visual"
+  },
+  "separe0b": {
+    "type": "hidden",
     "label": "⚙️ ⋮ General Settings",
     "value": "",
     "group": "⚙️ Settings"
@@ -23,10 +214,18 @@
   },
   "cooldownMinutes": {
     "type": "number",
-    "label": "Cooldown (Minutes)",
+    "label": "Join Heist Cooldown (Minutes)",
     "value": 5,
     "min": 0,
     "max": 60,
+    "group": "⚙️ Settings"
+  },
+  "startHeistCooldown": {
+    "type": "number",
+    "label": "Global Heist Cooldown (Minutes)",
+    "value": 5,
+    "min": 0,
+    "max": 120,
     "group": "⚙️ Settings"
   },
   "heistDuration": {
@@ -67,16 +266,6 @@
     },
     "group": "⚙️ Settings"
   },
-  "showVisual": {
-    "type": "dropdown",
-    "label": "Show Visual Overlay",
-    "value": "true",
-    "options": {
-      "true": "Yes - Show Overlay",
-      "false": "No - Chat Only"
-    },
-    "group": "⚙️ Settings"
-  },
   "separe1": {
     "type": "hidden",
     "label": "💬 ⋮ Chat Commands",
@@ -99,226 +288,115 @@
   },
   "separe2": {
     "type": "hidden",
-    "label": "🎯 ⋮ Low Risk Settings",
+    "label": "🎯 ⋮ Risk Levels Configuration",
     "value": "",
-    "group": "🎯 Low Risk"
+    "group": "🎯 Risk Levels"
   },
   "lowRiskName": {
     "type": "textfield",
-    "label": "Low Risk Name",
+    "label": "🟢 Low Risk Name",
     "value": "Bank Vault",
     "placeholder": "Bank Vault",
-    "group": "🎯 Low Risk"
+    "group": "🎯 Risk Levels"
   },
   "lowSuccessRate": {
     "type": "slider",
-    "label": "Success Rate (%)",
+    "label": "🟢 Low Success Rate (%)",
     "value": 70,
     "min": 0,
     "max": 100,
     "step": 5,
-    "group": "🎯 Low Risk"
+    "group": "🎯 Risk Levels"
   },
   "lowMultiplierMin": {
     "type": "slider",
-    "label": "Min Multiplier",
+    "label": "🟢 Low Min Multiplier",
     "value": 1.2,
-    "min": 1.0,
-    "max": 5.0,
+    "min": 1,
+    "max": 5,
     "step": 0.1,
-    "group": "🎯 Low Risk"
+    "group": "🎯 Risk Levels"
   },
   "lowMultiplierMax": {
     "type": "slider",
-    "label": "Max Multiplier",
+    "label": "🟢 Low Max Multiplier",
     "value": 1.5,
-    "min": 1.0,
-    "max": 5.0,
+    "min": 1,
+    "max": 5,
     "step": 0.1,
-    "group": "🎯 Low Risk"
-  },
-  "separe3": {
-    "type": "hidden",
-    "label": "⚡ ⋮ Medium Risk Settings",
-    "value": "",
-    "group": "⚡ Medium Risk"
+    "group": "🎯 Risk Levels"
   },
   "mediumRiskName": {
     "type": "textfield",
-    "label": "Medium Risk Name",
+    "label": "🟠 Medium Risk Name",
     "value": "Diamond Heist",
     "placeholder": "Diamond Heist",
-    "group": "⚡ Medium Risk"
+    "group": "🎯 Risk Levels"
   },
   "mediumSuccessRate": {
     "type": "slider",
-    "label": "Success Rate (%)",
+    "label": "🟠 Medium Success Rate (%)",
     "value": 50,
     "min": 0,
     "max": 100,
     "step": 5,
-    "group": "⚡ Medium Risk"
+    "group": "🎯 Risk Levels"
   },
   "mediumMultiplierMin": {
     "type": "slider",
-    "label": "Min Multiplier",
+    "label": "🟠 Medium Min Multiplier",
     "value": 1.5,
-    "min": 1.0,
-    "max": 5.0,
+    "min": 1,
+    "max": 5,
     "step": 0.1,
-    "group": "⚡ Medium Risk"
+    "group": "🎯 Risk Levels"
   },
   "mediumMultiplierMax": {
     "type": "slider",
-    "label": "Max Multiplier",
-    "value": 2.5,
-    "min": 1.0,
-    "max": 5.0,
+    "label": "🟠 Medium Max Multiplier",
+    "value": 2,
+    "min": 1,
+    "max": 5,
     "step": 0.1,
-    "group": "⚡ Medium Risk"
-  },
-  "separe4": {
-    "type": "hidden",
-    "label": "🔥 ⋮ High Risk Settings",
-    "value": "",
-    "group": "🔥 High Risk"
+    "group": "🎯 Risk Levels"
   },
   "highRiskName": {
     "type": "textfield",
-    "label": "High Risk Name",
+    "label": "🔴 High Risk Name",
     "value": "Casino Jackpot",
     "placeholder": "Casino Jackpot",
-    "group": "🔥 High Risk"
+    "group": "🎯 Risk Levels"
   },
   "highSuccessRate": {
     "type": "slider",
-    "label": "Success Rate (%)",
+    "label": "🔴 High Success Rate (%)",
     "value": 30,
     "min": 0,
     "max": 100,
     "step": 5,
-    "group": "🔥 High Risk"
+    "group": "🎯 Risk Levels"
   },
   "highMultiplierMin": {
     "type": "slider",
-    "label": "Min Multiplier",
-    "value": 2.5,
-    "min": 1.0,
-    "max": 10.0,
+    "label": "🔴 High Min Multiplier",
+    "value": 1.8,
+    "min": 1,
+    "max": 10,
     "step": 0.1,
-    "group": "🔥 High Risk"
+    "group": "🎯 Risk Levels"
   },
   "highMultiplierMax": {
     "type": "slider",
-    "label": "Max Multiplier",
-    "value": 4.0,
-    "min": 1.0,
-    "max": 10.0,
+    "label": "🔴 High Max Multiplier",
+    "value": 2,
+    "min": 1,
+    "max": 10,
     "step": 0.1,
-    "group": "🔥 High Risk"
-  },
-  "separe5": {
-    "type": "hidden",
-    "label": "💾 ⋮ Points Tracking",
-    "value": "",
-    "group": "💾 Points"
-  },
-  "jwtToken": {
-    "type": "text",
-    "label": "StreamElements JWT Token (for real points)",
-    "value": "",
-    "placeholder": "Get from streamelements.com/dashboard/account/channels",
-    "group": "💾 Points"
-  },
-  "channelId": {
-    "type": "text",
-    "label": "Channel ID",
-    "value": "",
-    "placeholder": "Your StreamElements channel ID",
-    "group": "💾 Points"
-  },
-  "enablePointTracking": {
-    "type": "dropdown",
-    "label": "Enable Point Tracking",
-    "value": "true",
-    "options": {
-      "true": "Yes - Use Real SE Points",
-      "false": "No - Visual Only"
-    },
-    "group": "💾 Points"
+    "group": "🎯 Risk Levels"
   },
   "separe6": {
     "type": "hidden",
-    "label": "� ⋮ Emote Customization",
-    "value": "",
-    "group": "😀 Emotes"
-  },
-  "emoteStart": {
-    "type": "textfield",
-    "label": "Heist Start Emote",
-    "value": "🚨",
-    "placeholder": "🚨",
-    "group": "😀 Emotes"
-  },
-  "emoteSuccess": {
-    "type": "textfield",
-    "label": "Success Emote",
-    "value": "💰",
-    "placeholder": "💰",
-    "group": "😀 Emotes"
-  },
-  "emoteFailure": {
-    "type": "textfield",
-    "label": "Failure Emote",
-    "value": "💥",
-    "placeholder": "💥",
-    "group": "😀 Emotes"
-  },
-  "emoteJoined": {
-    "type": "textfield",
-    "label": "Joined Emote",
-    "value": "✅",
-    "placeholder": "✅",
-    "group": "😀 Emotes"
-  },
-  "emoteError": {
-    "type": "textfield",
-    "label": "Error Emote",
-    "value": "❌",
-    "placeholder": "❌",
-    "group": "😀 Emotes"
-  },
-  "emoteWarning": {
-    "type": "textfield",
-    "label": "Warning Emote",
-    "value": "⚠️",
-    "placeholder": "⚠️",
-    "group": "😀 Emotes"
-  },
-  "emoteCooldown": {
-    "type": "textfield",
-    "label": "Cooldown Emote",
-    "value": "⏰",
-    "placeholder": "⏰",
-    "group": "😀 Emotes"
-  },
-  "emoteComplete": {
-    "type": "textfield",
-    "label": "Heist Complete Emote",
-    "value": "🎭",
-    "placeholder": "🎭",
-    "group": "😀 Emotes"
-  },
-  "emoteGame": {
-    "type": "textfield",
-    "label": "Game Ready Emote",
-    "value": "🎮",
-    "placeholder": "🎮",
-    "group": "😀 Emotes"
-  },
-  "separe7": {
-    "type": "hidden",
-    "label": "�💬 ⋮ Chat Messages",
+    "label": "💬 ⋮ Chat Messages",
     "value": "",
     "group": "💬 Messages"
   },
@@ -406,19 +484,63 @@
   },
   "msgReminder30s": {
     "type": "textfield",
-    "label": "30 Second Reminder",
+    "label": "30s Reminder",
     "value": "⏰ 30 seconds remaining to join the heist!",
     "group": "💬 Messages"
   },
   "msgReminder10s": {
     "type": "textfield",
-    "label": "10 Second Reminder",
+    "label": "10s Reminder",
     "value": "⏰ Only 10 seconds left to join!",
     "group": "💬 Messages"
   },
-  "version": {
+  "separe5": {
     "type": "hidden",
-    "label": "Heist Widget v1.0",
+    "label": "🔑 ⋮ API Credentials",
+    "value": "",
+    "group": "🔑 API"
+  },
+  "jwtToken": {
+    "type": "text",
+    "label": "JWT Token (REQUIRED)",
+    "value": "",
+    "placeholder": "Paste your JWT Token from SE Dashboard",
+    "group": "🔑 API"
+  },
+  "channelId": {
+    "type": "text",
+    "label": "Channel ID (REQUIRED)",
+    "value": "",
+    "placeholder": "Paste your Channel ID from SE Dashboard",
+    "group": "🔑 API"
+  },
+  "widgetVersion": {
+    "type": "text",
+    "label": "🎮 Heist Game by Studio NMS",
+    "value": "v0.01 (alpha)",
+    "group": "ℹ️ ⋮ Info"
+  },
+  "support": {
+    "type": "text",
+    "label": "📧 Support",
+    "value": "contact@noticemesenpai.studio",
+    "group": "ℹ️ ⋮ Info"
+  },
+  "credits": {
+    "type": "text",
+    "label": "🎮 Created by Studio NMS",
+    "value": "noticemesenpai.studio",
+    "group": "ℹ️ ⋮ Info"
+  },
+  "thanks": {
+    "type": "hidden",
+    "label": "Thank you for using our widget 💜",
+    "value": "",
+    "group": "ℹ️ ⋮ Info"
+  },
+  "infoEnd": {
+    "type": "hidden",
+    "label": "",
     "value": "",
     "group": "ℹ️ ⋮ Info"
   }
