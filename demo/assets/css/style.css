@@ -1,0 +1,685 @@
+/* Studio NMS - Heist Game Demo - Cyberpunk Edition */
+
+/* ========================================
+   CYBERPUNK DEMO CONTROLS
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Mono', monospace;
+  background: #000000;
+  color: #ffffff;
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+}
+
+/* Right side background - widget display area */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 500px;
+  right: 0;
+  height: 100%;
+  background: #ffffff;
+  z-index: 0;
+}
+
+/* Noise texture removed - static background only */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ff0099;
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00d9ff;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #ff0099 #000000;
+}
+
+/* Mouse cursor glow - DISABLED for cleaner demo */
+#cursor-glow {
+  display: none;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "scale-variable", sans-serif;
+  font-variation-settings: "wght" 400, "wdth" 125;
+  font-weight: normal;
+}
+
+/* Demo Controls Panel */
+#demo-controls {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 500px;
+  background: #000000;
+  padding: 40px 30px;
+  overflow-y: auto;
+  z-index: 100;
+  border-right: 2px solid #ff0099;
+}
+
+h1 {
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-size: 32px;
+  text-align: left;
+  font-style: italic;
+}
+
+.subtitle {
+  color: #ff0099;
+  text-align: left;
+  margin-bottom: 40px;
+  font-size: 16px;
+  font-style: italic;
+}
+
+.section {
+  margin-bottom: 40px;
+  padding: 25px;
+  background: transparent;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid rgba(255, 0, 153, 0.3);
+  box-shadow: none;
+}
+
+.section:last-child {
+  border-bottom: none;
+}
+
+.section h2 {
+  color: #ffffff;
+  font-size: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-style: normal;
+}
+
+.section-number {
+  background: #ff0099;
+  color: #000000;
+  width: 32px;
+  height: 32px;
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Space Mono', monospace;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background: #000000;
+  border-radius: 0;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: 'Space Mono', monospace;
+  color: #ffffff;
+  font-style: italic;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  outline: none;
+  border-bottom-color: #ff0099;
+}
+
+input[type="text"]::placeholder,
+input[type="number"]::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+  font-style: italic;
+}
+
+.category-input {
+  width: 100%;
+  padding: 12px 15px;
+  background: #000000;
+  border: 2px solid #00d9ff;
+  color: #ffffff;
+  font-family: 'Space Mono', monospace;
+  font-size: 14px;
+  font-style: italic;
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.category-input:focus {
+  border-color: #ff0099;
+}
+
+select.category-input option {
+  background: #000000;
+  color: #ffffff;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+button {
+  flex: 1;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 0;
+  font-size: 14px;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: 'Space Mono', monospace;
+  font-style: italic;
+}
+
+.btn-generate {
+  background: #ff0099;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.btn-generate:hover {
+  background: #cc0077;
+  box-shadow: none;
+}
+
+.btn-copy {
+  background: #00d9ff;
+  color: #000000;
+  box-shadow: none;
+}
+
+.btn-copy:hover {
+  background: #00b8d9;
+  box-shadow: none;
+}
+
+.demo-btn {
+  background: #000000;
+  color: #ff0099;
+  border: 2px solid #ff0099;
+  box-shadow: none;
+}
+
+.demo-btn:hover {
+  background: #ff0099;
+  color: #000000;
+  box-shadow: none;
+}
+
+/* Chat Log */
+.chat-log-container {
+  background: #000000;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  height: 300px;
+  overflow-y: auto;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.chat-message {
+  margin-bottom: 8px;
+  padding: 6px 10px;
+  border-left: 3px solid #ffffff;
+}
+
+.chat-message.system {
+  border-left-color: #00d9ff;
+  color: #00d9ff;
+}
+
+.chat-message.success {
+  border-left-color: #57f287;
+  color: #57f287;
+}
+
+.chat-message.error {
+  border-left-color: #ff0099;
+  color: #ff0099;
+}
+
+.chat-message.command {
+  border-left-color: #ffff00;
+  color: #ffff00;
+}
+
+}
+
+/* ========================================
+   WIDGET CSS VARIABLES
+   ======================================== */
+:root {
+  --font-family: 'Inter', 'Segoe UI', sans-serif;
+  --font-weight: 500;
+  --title-font-size: 20px;
+  --timer-font-size: 22px;
+  --participant-font-size: 14px;
+  --bg-dark: #2a1a3a;
+  --bg-light: #3d2050;
+  --text-primary: #ffffff;
+  --text-secondary: #b4b7c9;
+  --accent-blue: #5865f2;
+  --accent-purple: #9b6bff;
+  --accent-green: #57f287;
+  --accent-orange: #ffa94d;
+  --accent-red: #ed4245;
+  --timer-border: rgba(88, 101, 242, 0.4);
+}
+
+/* ========================================
+   WIDGET CONTAINER & POSITIONING
+   Change top/right/left values to reposition
+   ======================================== */
+#heist-widget {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-left: 250px; /* Half of left panel width (500px / 2) to center in right side */
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  z-index: 10000;
+}
+
+#heist-widget::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 500px;
+  background: transparent;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* ========================================
+   HEIST STATUS OVERLAY
+   Main widget visual container
+   ======================================== */
+.heist-status {
+  background: linear-gradient(135deg, #2a1a3a, #3d2050) !important;
+  border: none;
+  border-radius: 28px;
+  padding: 0;
+  min-width: 420px;
+  max-width: 480px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.heist-status * {
+  background-color: transparent !important;
+}
+
+.heist-status.hidden {
+  display: none;
+}
+
+/* ========================================
+   HEADER COMPONENTS
+   Icon, title, and timer styling
+   ======================================== */
+.heist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 24px 28px;
+  background: transparent;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.heist-icon {
+  font-size: 28px;
+  animation: pulse 2s infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.heist-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.heist-title {
+  font-size: var(--title-font-size);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+
+.heist-timer {
+  font-size: var(--timer-font-size);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(155, 107, 255, 0.2));
+  padding: 12px 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--timer-border);
+  flex-shrink: 0;
+}
+
+/* ========================================
+   PARTICIPANTS SECTION
+   User list and participant info
+   ======================================== */
+.heist-participants {
+  padding: 24px 28px;
+  background: transparent;
+}
+
+.participant-count {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  padding: 10px 24px;
+  border-radius: 50px;
+  margin-bottom: 18px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.participant-count.hidden {
+  display: none;
+}
+
+.participant-list {
+  max-height: 240px;
+  overflow-y: auto;
+  margin-top: 12px;
+  padding-right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.participant-item {
+  background: rgba(20, 22, 36, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid;
+  padding: 16px 18px;
+  margin: 0;
+  border-radius: 18px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.participant-item:hover {
+  background: rgba(20, 22, 36, 0.85);
+  transform: translateX(-6px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.participant-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: var(--participant-font-size);
+}
+
+.participant-info {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.participant-info span:first-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ========================================
+   RISK LEVEL BADGES
+   Color-coded risk indicators
+   ======================================== */
+.risk-low { 
+  color: var(--accent-green);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(87, 242, 135, 0.15);
+  border-radius: 8px;
+}
+
+.risk-medium { 
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(255, 169, 77, 0.15);
+  border-radius: 8px;
+}
+
+.risk-high { 
+  color: var(--accent-red);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(237, 66, 69, 0.15);
+  border-radius: 8px;
+}
+
+/* Color-coded borders for risk levels */
+.participant-item:has(.risk-low) {
+  border-left-color: var(--accent-green);
+}
+
+.participant-item:has(.risk-medium) {
+  border-left-color: var(--accent-orange);
+}
+
+.participant-item:has(.risk-high) {
+  border-left-color: var(--accent-red);
+}
+
+/* Optional: Debug overlay (hidden by default) */
+.heist-debug {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #0f0;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  border-radius: 4px;
+  max-width: 300px;
+  display: none;
+  z-index: 9999;
+}
+
+.heist-debug.active {
+  display: block;
+}
+
+.heist-debug h3 {
+  color: #0ff;
+  margin-bottom: 8px;
+  font-size: 14px;
+  border-bottom: 1px solid #0ff;
+  padding-bottom: 4px;
+}
+
+.heist-debug p {
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.heist-debug .participant {
+  background: rgba(0, 255, 65, 0.1);
+  padding: 4px;
+  margin: 4px 0;
+  border-left: 2px solid var(--success-color);
+}
+
+.heist-debug .status {
+  color: #ff0;
+  font-weight: bold;
+}
+
+.heist-debug .timer {
+  color: #f90;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.participant-item {
+  animation: fadeIn 0.4s ease-out backwards;
+}
+
+.participant-item:nth-child(1) { animation-delay: 0.05s; }
+.participant-item:nth-child(2) { animation-delay: 0.1s; }
+.participant-item:nth-child(3) { animation-delay: 0.15s; }
+.participant-item:nth-child(4) { animation-delay: 0.2s; }
+.participant-item:nth-child(5) { animation-delay: 0.25s; }
+
+.heist-debug.active {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   Custom scrollbar for participant list
+   ======================================== */
+.participant-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.participant-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin: 4px 0;
+}
+
+.participant-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.participant-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+  background-clip: padding-box;
+}

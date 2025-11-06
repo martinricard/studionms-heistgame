@@ -10,9 +10,10 @@ The **Studio NMS - Heist Game SE** is a fully interactive text-based heist mini-
 **Features:**
 - 🎰 Three risk levels (Low, Medium, High) with customizable rewards
 - 💰 Real StreamElements loyalty point integration
+- ⭐ Subscriber bonus multipliers (Prime, Tier 1, Tier 2, Tier 3)
 - ⏰ Countdown timer with optional reminders
 - 🎨 Beautiful animated overlay UI
-- 👥 Live participant tracking
+- 👥 Live participant tracking with subscriber tier badges
 - 🚫 Mod/Streamer heist cancellation
 - 📱 Fully customizable messages, commands, and visuals
 

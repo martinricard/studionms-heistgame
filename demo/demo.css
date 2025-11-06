@@ -1,0 +1,552 @@
+/* 
+ * Studio NMS - Heist Game Demo
+ * Demo page styling + Widget styles
+ */
+
+/* ========================================
+   DEMO CONTROL PANEL STYLES
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: #fff;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+#demo-controls {
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  bottom: 20px;
+  width: 400px;
+  background: rgba(20, 22, 36, 0.95);
+  border-radius: 16px;
+  padding: 24px;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+}
+
+.demo-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(88, 101, 242, 0.3);
+}
+
+.demo-header h1 {
+  font-size: 24px;
+  margin-bottom: 8px;
+  color: #5865f2;
+}
+
+.demo-header p {
+  font-size: 14px;
+  color: #b4b7c9;
+}
+
+.demo-section {
+  margin-bottom: 24px;
+  padding: 16px;
+  background: rgba(26, 28, 46, 0.6);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.demo-section h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+  color: #fff;
+}
+
+.demo-btn {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 6px 0;
+  background: linear-gradient(135deg, #5865f2, #9b6bff);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(88, 101, 242, 0.4);
+}
+
+.demo-btn.primary {
+  background: linear-gradient(135deg, #57f287, #5865f2);
+}
+
+.demo-btn.success {
+  background: linear-gradient(135deg, #57f287, #3ba55d);
+}
+
+.demo-btn.warning {
+  background: linear-gradient(135deg, #ffa94d, #f26522);
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 6px 0;
+  background: rgba(20, 22, 36, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: white;
+  font-size: 14px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #5865f2;
+}
+
+#demo-status p {
+  margin: 8px 0;
+  font-size: 14px;
+  color: #b4b7c9;
+}
+
+#demo-status strong {
+  color: #fff;
+  margin-right: 8px;
+}
+
+#demo-status span {
+  color: #57f287;
+  font-weight: 600;
+}
+
+#chat-log {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.chat-message {
+  margin: 4px 0;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.chat-message.system {
+  color: #57f287;
+  font-weight: 600;
+}
+
+.chat-message.user {
+  color: #5865f2;
+}
+
+/* Scrollbar styling for demo controls */
+#demo-controls::-webkit-scrollbar,
+#chat-log::-webkit-scrollbar {
+  width: 8px;
+}
+
+#demo-controls::-webkit-scrollbar-track,
+#chat-log::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+#demo-controls::-webkit-scrollbar-thumb,
+#chat-log::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #5865f2, #9b6bff);
+  border-radius: 10px;
+}
+
+/* ========================================
+   WIDGET STYLES (From heist-widget.css)
+   ======================================== */
+:root {
+  --bg-dark: rgba(20, 22, 36, 0.98);
+  --bg-light: rgba(26, 28, 46, 0.98);
+  --text-primary: rgba(255, 255, 255, 1);
+  --text-secondary: rgba(180, 183, 201, 1);
+  --accent-blue: rgba(88, 101, 242, 1);
+  --accent-purple: rgba(155, 107, 255, 1);
+  --accent-green: rgba(87, 242, 135, 1);
+  --accent-orange: rgba(255, 169, 77, 1);
+  --accent-red: rgba(237, 66, 69, 1);
+  --accent-pink: #ff6bcc;
+  --timer-border: rgba(88, 101, 242, 0.4);
+  --font-family: 'Roboto', 'Inter', 'Segoe UI', sans-serif;
+  --font-weight: 400;
+  --title-font-size: 17px;
+  --timer-font-size: 28px;
+  --participant-font-size: 15px;
+}
+
+/* ========================================
+   WIDGET CONTAINER & POSITIONING
+   Change top/right/left values to reposition
+   ======================================== */
+#heist-widget {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-family: var(--font-family);
+  font-weight: var(--font-weight);
+  z-index: 9999;
+}
+
+/* ========================================
+   HEIST STATUS OVERLAY
+   Main widget visual container
+   ======================================== */
+.heist-status {
+  background: linear-gradient(135deg, var(--bg-dark), var(--bg-light));
+  border: none;
+  border-radius: 28px;
+  padding: 0;
+  min-width: 420px;
+  max-width: 480px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+  animation: slideInRight 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(30px);
+  overflow: hidden;
+}
+
+.heist-status.hidden {
+  display: none;
+}
+
+/* ========================================
+   HEADER COMPONENTS
+   Icon, title, and timer styling
+   ======================================== */
+.heist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 28px 24px 28px;
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.heist-icon {
+  font-size: 28px;
+  animation: pulse 2s infinite;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+.heist-icon img {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+.heist-title {
+  font-size: var(--title-font-size);
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: 0.3px;
+}
+
+.heist-timer {
+  font-size: var(--timer-font-size);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, rgba(88, 101, 242, 0.2), rgba(155, 107, 255, 0.2));
+  padding: 12px 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--timer-border);
+  flex-shrink: 0;
+}
+
+/* ========================================
+   PARTICIPANTS SECTION
+   User list and participant info
+   ======================================== */
+.heist-participants {
+  padding: 24px 28px;
+}
+
+.participant-count {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  padding: 10px 24px;
+  border-radius: 50px;
+  margin-bottom: 18px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.participant-count.hidden {
+  display: none;
+}
+
+.participant-list {
+  max-height: 240px;
+  overflow-y: auto;
+  margin-top: 12px;
+  padding-right: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.participant-item {
+  background: rgba(20, 22, 36, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid;
+  padding: 16px 18px;
+  margin: 0;
+  border-radius: 18px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.participant-item:hover {
+  background: rgba(20, 22, 36, 0.85);
+  transform: translateX(-6px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.participant-name {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: var(--participant-font-size);
+}
+
+.participant-info {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.participant-info span:first-child {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ========================================
+   RISK LEVEL BADGES
+   Color-coded risk indicators
+   ======================================== */
+.risk-low { 
+  color: var(--accent-green);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(87, 242, 135, 0.15);
+  border-radius: 8px;
+}
+
+.risk-medium { 
+  color: var(--accent-orange);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(255, 169, 77, 0.15);
+  border-radius: 8px;
+}
+
+.risk-high { 
+  color: var(--accent-red);
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  background: rgba(237, 66, 69, 0.15);
+  border-radius: 8px;
+}
+
+/* Color-coded borders for risk levels */
+.participant-item:has(.risk-low) {
+  border-left-color: var(--accent-green);
+}
+
+.participant-item:has(.risk-medium) {
+  border-left-color: var(--accent-orange);
+}
+
+.participant-item:has(.risk-high) {
+  border-left-color: var(--accent-red);
+}
+
+/* Optional: Debug overlay (hidden by default) */
+.heist-debug {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #0f0;
+  padding: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  border-radius: 4px;
+  max-width: 300px;
+  display: none;
+  z-index: 9999;
+}
+
+.heist-debug.active {
+  display: block;
+}
+
+.heist-debug h3 {
+  color: #0ff;
+  margin-bottom: 8px;
+  font-size: 14px;
+  border-bottom: 1px solid #0ff;
+  padding-bottom: 4px;
+}
+
+.heist-debug p {
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.heist-debug .participant {
+  background: rgba(0, 255, 65, 0.1);
+  padding: 4px;
+  margin: 4px 0;
+  border-left: 2px solid var(--success-color);
+}
+
+.heist-debug .status {
+  color: #ff0;
+  font-weight: bold;
+}
+
+.heist-debug .timer {
+  color: #f90;
+  font-weight: bold;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(400px) scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.participant-item {
+  animation: fadeIn 0.4s ease-out backwards;
+}
+
+.participant-item:nth-child(1) { animation-delay: 0.05s; }
+.participant-item:nth-child(2) { animation-delay: 0.1s; }
+.participant-item:nth-child(3) { animation-delay: 0.15s; }
+.participant-item:nth-child(4) { animation-delay: 0.2s; }
+.participant-item:nth-child(5) { animation-delay: 0.25s; }
+
+.heist-debug.active {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   Custom scrollbar for participant list
+   ======================================== */
+.participant-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.participant-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  margin: 4px 0;
+}
+
+.participant-list::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.participant-list::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));
+  background-clip: padding-box;
+}

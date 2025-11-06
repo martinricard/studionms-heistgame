@@ -1,0 +1,42 @@
+<!-- Studio NMS - Heist Game SE -->
+<!-- 
+  Text-based heist game for StreamElements loyalty points
+  Version 0.01 (Alpha)
+  
+  For support and bug reports:
+  contact@noticemesenpai.studio
+  
+  All interactions happen through chat commands.
+  Configure via Field JSON in StreamElements settings.
+  API: https://dev.streamelements.com/
+-->
+
+<!-- NOTE: In StreamElements, paste the contents of heist-widget.css into the CSS tab -->
+<!-- OR upload heist-widget.css to a web host and use: <link rel="stylesheet" href="YOUR_URL/heist-widget.css"> -->
+
+<!-- Google Fonts will be loaded dynamically based on user selection -->
+<link id="google-font-link" rel="stylesheet" href="">
+
+<div id="heist-widget">
+  <div id="heist-status" class="heist-status hidden">
+    <div class="heist-header">
+      <div class="header-left">
+        <span class="heist-icon">🚨</span>
+        <span class="heist-title">Heist in Progress</span>
+      </div>
+      <div class="heist-timer" id="heist-timer">01:00</div>
+    </div>
+    <div class="heist-bank">
+      <div class="bank-label">💰 TOTAL BANK</div>
+      <div class="bank-amount" id="bank-amount">0</div>
+    </div>
+    <div class="heist-participants">
+      <div class="participant-count" id="participant-count">0 / 50</div>
+      <div class="participant-list" id="participant-list"></div>
+    </div>
+  </div>
+</div>
+
+<!-- NOTE: In StreamElements, paste the contents of heist-widget.js into the JS tab -->
+<!-- OR upload heist-widget.js to a web host and use: <script src="YOUR_URL/heist-widget.js"></script> -->
+

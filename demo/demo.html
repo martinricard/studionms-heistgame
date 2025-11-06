@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heist Widget Demo - Studio NMS</title>
+  
+  <!-- Adobe Typekit - Scale VF for headings -->
+  <link rel="stylesheet" href="https://use.typekit.net/gac2pbu.css">
+  
+  <!-- Google Fonts - Space Mono for body text -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <!-- Cursor glow effect -->
+  <div id="cursor-glow"></div>
+  
+  <!-- Demo Control Panel -->
+  <div id="demo-controls">
+    <h1>Heist Widget Demo</h1>
+    <p class="subtitle">simulate heist gameplay without streamelements</p>
+
+    <div class="section">
+      <h2>
+        <span class="section-number">1</span>
+        quick actions
+      </h2>
+      <div class="button-group">
+        <button onclick="simulateHeistStart()" class="btn-generate">Start Heist</button>
+      </div>
+      <div class="button-group" style="margin-top: 10px;">
+        <button onclick="simulateJoin('Alice', 100, 'low')" class="demo-btn">Alice (100, low)</button>
+        <button onclick="simulateJoin('Bob', 250, 'medium')" class="demo-btn">Bob (250, med)</button>
+      </div>
+      <div class="button-group" style="margin-top: 10px;">
+        <button onclick="simulateJoin('Charlie', 500, 'high')" class="demo-btn">Charlie (500, high)</button>
+        <button onclick="skipToEnd()" class="btn-copy">Skip to End</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>
+        <span class="section-number">2</span>
+        custom join
+      </h2>
+      <label for="username">username:</label>
+      <input type="text" id="username" placeholder="enter username..." value="TestUser">
+      
+      <label for="amount" style="margin-top: 15px;">points amount:</label>
+      <input type="number" id="amount" placeholder="enter amount..." value="150" min="10" max="10000">
+      
+      <label for="risk" style="margin-top: 15px;">risk level:</label>
+      <select id="risk" class="category-input">
+        <option value="low">Low Risk (70% success)</option>
+        <option value="medium" selected>Medium Risk (50% success)</option>
+        <option value="high">High Risk (30% success)</option>
+      </select>
+      
+      <div class="button-group" style="margin-top: 15px;">
+        <button onclick="customJoin()" class="btn-generate">Join Heist</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>
+        <span class="section-number">3</span>
+        chat log
+      </h2>
+      <div id="chat-log" class="chat-log-container"></div>
+    </div>
+  </div>
+
+  <!-- Heist Widget (Same as production) -->
+  <div id="heist-widget">
+    <div id="heist-status" class="heist-status hidden">
+      <div class="heist-header">
+        <div class="header-left">
+          <span class="heist-icon">🚨</span>
+          <span class="heist-title">Heist in Progress</span>
+        </div>
+        <div class="heist-timer" id="heist-timer">01:00</div>
+      </div>
+      <div class="heist-participants">
+        <div class="participant-count" id="participant-count-display">0 / 50</div>
+        <div class="participant-list" id="participant-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/demo.js"></script>
+</body>
+</html>

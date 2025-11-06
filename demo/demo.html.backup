@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Heist Widget Demo - Studio NMS</title>
+  <link rel="stylesheet" href="assets/css/demo.css">
+</head>
+<body>
+  <!-- Demo Control Panel -->
+  <div id="demo-controls">
+    <div class="demo-header">
+      <h1>🎮 Heist Widget Demo</h1>
+      <p>Studio NMS - Interactive Demo with Simulated Chat</p>
+    </div>
+
+    <div class="demo-section">
+      <h3>🎬 Quick Actions</h3>
+      <button onclick="simulateHeistStart()" class="demo-btn primary">Start Heist (!heist)</button>
+      <button onclick="simulateJoin('Alice', 100, 'low')" class="demo-btn">Alice Joins (100, low)</button>
+      <button onclick="simulateJoin('Bob', 250, 'medium')" class="demo-btn">Bob Joins (250, medium)</button>
+      <button onclick="simulateJoin('Charlie', 500, 'high')" class="demo-btn">Charlie Joins (500, high)</button>
+      <button onclick="skipToEnd()" class="demo-btn warning">Skip to Heist End</button>
+    </div>
+
+    <div class="demo-section">
+      <h3>💬 Custom Join</h3>
+      <input type="text" id="username" placeholder="Username" value="TestUser">
+      <input type="number" id="amount" placeholder="Amount" value="150" min="10" max="10000">
+      <select id="risk">
+        <option value="low">Low Risk</option>
+        <option value="medium" selected>Medium Risk</option>
+        <option value="high">High Risk</option>
+      </select>
+      <button onclick="customJoin()" class="demo-btn success">Join Heist</button>
+    </div>
+
+    <div class="demo-section">
+      <h3>📊 Widget Info</h3>
+      <div id="demo-status">
+        <p><strong>Status:</strong> <span id="status-text">Ready</span></p>
+        <p><strong>Participants:</strong> <span id="participant-count">0</span></p>
+        <p><strong>Timer:</strong> <span id="timer-display">--:--</span></p>
+      </div>
+    </div>
+
+    <div class="demo-section">
+      <h3>💬 Chat Log</h3>
+      <div id="chat-log"></div>
+    </div>
+  </div>
+
+  <!-- Heist Widget (Same as production) -->
+  <div id="heist-widget">
+    <div id="heist-status" class="heist-status hidden">
+      <div class="heist-header">
+        <div class="header-left">
+          <span class="heist-icon">🚨</span>
+          <span class="heist-title">Heist in Progress</span>
+        </div>
+        <div class="heist-timer" id="heist-timer">01:00</div>
+      </div>
+      <div class="heist-participants">
+        <div class="participant-count" id="participant-count-display">0 / 50</div>
+        <div class="participant-list" id="participant-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/demo.js"></script>
+</body>
+</html>
