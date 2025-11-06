@@ -276,4 +276,4 @@ Website: noticemesenpai.studio
 
 ---
 
-**Ready to impress?** Open `demo.html` and start showcasing! 🚀
+**View Demo:** Open `demo.html` in your browser to see the interactive heist widget in action.
